@@ -124,6 +124,20 @@ prep() {
     ${COMPOSE} pull
 }
 
+# Gets the IP of the local machine.
+getIp() {
+    HOSTNAME_VAL="$(hostname -i)"
+
+    if [ -z $HOSTNAME_VAL ]; then
+        IP="127.0.0.1"
+    else
+        IP=$HOSTNAME_VAL
+    fi
+
+    echo $IP
+}
+
+
 # get the IP:port of a container via either the local docker-machine or from
 # triton inst get $instance_name.
 getIpPort() {
@@ -139,7 +153,7 @@ getIpPort() {
         local ip=$(docker-machine ip default 2>/dev/null || true)
         local port=$(docker inspect ${PREFIX}_$1_1 | json -a NetworkSettings.Ports."$2/tcp".0.HostPort)
     fi
-    echo "${ip:-`hostname -i`}:$port"
+    echo "${ip:-`getIp`}:$port"
 }
 
 # start and initialize the Couchbase cluster, along with Consul
