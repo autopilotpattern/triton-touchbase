@@ -9,10 +9,9 @@ RUN apt-get update && \
     unzip && \
     rm -rf /var/lib/apt/lists/*
 
-RUN curl -Lo /tmp/consul_template_0.11.0_linux_amd64.zip https://github.com/hashicorp/consul-template/releases/download/v0.11.0/consul_template_0.11.0_linux_amd64.zip && \
-    unzip /tmp/consul_template_0.11.0_linux_amd64.zip && \
+RUN curl -Lo /tmp/consul_template_0.14.0_linux_amd64.zip https://releases.hashicorp.com/consul-template/0.14.0/consul-template_0.14.0_linux_amd64.zip && \
+    unzip /tmp/consul_template_0.14.0_linux_amd64.zip && \
     mv consul-template /bin
-
 
 # get ContainerPilot release
 ENV CONTAINERPILOT_VERSION 2.0.0

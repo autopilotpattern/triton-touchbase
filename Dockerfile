@@ -31,8 +31,8 @@ RUN openssl req -x509 -newkey rsa:2048 -keyout key.pem -out cert.pem -days 365 -
     -subj "/C=US/ST=None/L=None/O=None/CN=example.com"
 
 # we use consul-template to re-write our config.json
-RUN curl -Lo /tmp/consul_template_0.11.0_linux_amd64.zip https://github.com/hashicorp/consul-template/releases/download/v0.11.0/consul_template_0.11.0_linux_amd64.zip && \
-    unzip /tmp/consul_template_0.11.0_linux_amd64.zip && \
+RUN curl -Lo /tmp/consul_template_0.14.0_linux_amd64.zip https://releases.hashicorp.com/consul-template/0.14.0/consul-template_0.14.0_linux_amd64.zip && \
+    unzip /tmp/consul_template_0.14.0_linux_amd64.zip && \
     mv consul-template /usr/local/bin
 
 # get ContainerPilot release
