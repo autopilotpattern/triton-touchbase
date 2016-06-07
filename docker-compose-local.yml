@@ -82,7 +82,7 @@ nginx:
 # Prometheus server to gather telemetry
 prometheus:
     image: autopilotpattern/prometheus
-    mem_limit: 128g
+    mem_limit: 128m
     restart: always
     ports:
       - "9090:9090"
